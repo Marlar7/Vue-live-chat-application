@@ -12,17 +12,29 @@
 </template>
 <script>
 import {ref} from 'vue'
+import {auth }from "../firebase/config"
 export default {
     setup(){
         let displayName =ref("");
         let email= ref("");
         let password=ref("");
-        let SingUp=()=>{
-            console.log(displayName.value)
+        let error=ref(null);
+        let SingUp=async()=>{
+            try{
+                
+                let res=await auth.createUserWithEmailAndPassword(email.value, password.value)
+                if(!res){
+                    throw new Error("could not create new user")
+                }
+                console.log(res.user);
+        }catch(err){
+            error.value=err.message;
         }
 
-        return{displayName ,email,password ,SingUp}
     }
+
+        return{displayName ,email,password ,SingUp }
+}
 }
 </script>
 <style>

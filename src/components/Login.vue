@@ -18,7 +18,7 @@ export default {
         let email= ref("");
         let password=ref("");
         let login=()=>{
-            console.log(displayName.value)
+           
         }
 
         return{email,password ,login}
