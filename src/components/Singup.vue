@@ -26,11 +26,11 @@ export default {
                 if(!res){
                     throw new Error("could not create new user")
                 }
+                res.user.updateProfile({displayName:displayName.value})
                 console.log(res.user);
-        }catch(err){
-            error.value=err.message;
-        }
-
+            }catch(err){
+                error.value=err.message;
+            }
     }
 
         return{displayName ,email,password ,SingUp }
