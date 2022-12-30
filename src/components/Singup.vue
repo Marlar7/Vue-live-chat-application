@@ -5,6 +5,7 @@
         <input type="text" placeholder="display name" v-model="displayName">
         <input type="email" placeholder="email" v-model="email">
         <input type="password" placeholder="password" v-model="password">
+        <div v-if="error" class="error">{{error}}</div>
         <button>Sing Up</button>
     </form>
 </div>
@@ -23,10 +24,12 @@ export default {
        let {error ,createAccount}= useSingup()
         let SingUp=async()=>{
             let res=await createAccount(email.value, password.value,displayName.value)
-            console.log(res.user)
+            if (res){
+                console.log(res.user)
+            }
     }
 
-        return{displayName ,email,password ,SingUp }
+        return{displayName ,email,password ,SingUp,error }
 }
 }
 </script>
