@@ -1,11 +1,11 @@
 <template>
     <div class="welcome container">
         <div v-if="showLoginForm">
-             <Singup></Singup>
+             <Singup @enterChatroom="enterChatroom"></Singup>
              <p>not a member?<span @click="showLoginForm=!showLoginForm">create account?</span></p>
         </div>
        <div v-else >
-            <Login></Login>
+            <Login @enterChatroom="enterChatroom"></Login>
             <p>Already member? <span @click="showLoginForm =!showLoginForm">Login Account?</span></p>
        </div>
         
@@ -15,13 +15,16 @@
 import Login from "../components/Login"
 import Singup from "../components/Singup"
 import {ref} from'vue'
+import{ useRouter }  from "vue-router";
 export default {
     components :{Singup, Login},
     setup(){
         let showLoginForm= ref(true);
-
-
-        return{showLoginForm};
+        let router=useRouter();
+        let enterChatroom=()=> {
+          router.push({name:"Chatroom"})
+        }
+        return{showLoginForm ,enterChatroom};
     }
 }
 </script>

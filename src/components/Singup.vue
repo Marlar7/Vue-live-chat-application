@@ -16,7 +16,7 @@ import {ref} from 'vue'
 
 import useSingup from"../composables/useSingup"
 export default {
-    setup(){
+    setup(props,context){
         let displayName =ref("");
         let email= ref("");
         let password=ref("");
@@ -25,7 +25,7 @@ export default {
         let SingUp=async()=>{
             let res=await createAccount(email.value, password.value,displayName.value)
             if (res){
-                console.log(res.user)
+               context.emit("enterChatroom")
             }
     }
 
