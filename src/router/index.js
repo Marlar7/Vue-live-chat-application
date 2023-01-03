@@ -4,6 +4,7 @@ import Chatroom from"../views/Chatroom.vue"
 import {auth} from "../firebase/config"
 
 
+
 const routes = [
   {
     path:"/",
@@ -19,7 +20,7 @@ const routes = [
       if(user){
         next();
       }else{
-        next({name:"Welcome"})
+        next({name:"welcome"})
       }
     }
 
