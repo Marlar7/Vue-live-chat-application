@@ -2,21 +2,22 @@
     <nav v-if="user">
         <div>
             <p>
-              Hi{{displayName}}  Hi display name
+              Hi {{user.displayName}} 
             </p>
             <p class="email"> logged in as {{user.email}}</p>
 
         </div>
-        <button @click="logout">Logout</button>
+        <button @click ="logout">Logout</button>
     </nav>
 </template>
 <script>
 import getUser from"../composables/getUser"
+import {auth} from "../firebase/config";
 import {ref} from "vue"
 export default {
     setup(){
-        let error = ref(null)
-        let{user}=getUser();
+        let error = ref(null);
+        let{user}= getUser();
 
         let logout=async ()=>{
             try {
@@ -24,11 +25,11 @@ export default {
            console.log("user logged out");
           } catch (err){
               error.value=err.message;
-            console.log(err.value);
+           
           }
         }
               
-        return{logout ,user};
+        return{logout ,user };
     }
 }
 </script>
