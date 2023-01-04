@@ -11,10 +11,16 @@
 </template>
 <script>
 import {db} from "../firebase/config";
-import {ref} from "vue"
+import {ref, computed} from "vue"
 export default {
     setup(){
         let messages= ref([]);
+        let formattedMessages= computed(()=>{
+            return messages.value.map((msg)=>{
+                let formatTime=
+                return {...msg,created_at:formatTime}
+            })
+        })
         db.collection("messages").orderBy("created_at").onSnapshot((snap)=>{
             let results=[];
             snap.docs.forEach((doc)=>{
