@@ -1,6 +1,6 @@
 
 
-import {ref}from "vue"
+import {ref}from "vue";
 import{db} from "../firebase/config"
 
 let useCollection=(collection)=>{

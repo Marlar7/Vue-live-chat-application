@@ -6,8 +6,8 @@
     </form>
 </template>
 <script>
-import {ref} from 'vue'
-import {timestamp} from "../firebase/config"
+import {ref} from 'vue';
+import {timestamp} from "../firebase/config";
 import getUser from "../composables/getUser";
 import useCollection from "../composables/useCollection"
 export default {
